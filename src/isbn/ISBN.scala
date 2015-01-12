@@ -11,7 +11,7 @@ object ISBNValidator {
     xs.zip(ys).map {case (x, y) => f(x, y)}
   
   def isISBNValid(str : Seq[Char]) = 
-    zipWith((x : Int, y : Int) => x * y)(
+    zipWith[Int, Int, Int](_ * _)(
         str.filterNot(x => x == '-').map(toAppropriateInt), 
         (str.length to 1)).sum % 11 == 0
 
